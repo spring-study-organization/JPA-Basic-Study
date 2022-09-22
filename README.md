@@ -3,7 +3,7 @@
 
 ## Who
 
-| [<img src="https://avatars.githubusercontent.com/jonghyunhub" width="100">](https://github.com/jonghyunhub) | [<img src="https://avatars.githubusercontent.com/wellbeing-dough" width="100">](https://github.com/godtaehee) | [<img src="https://avatars.githubusercontent.com/alsduq1117" width="100">](https://github.com/godtaehee) |
+| [<img src="https://avatars.githubusercontent.com/jonghyunhub" width="100">](https://github.com/jonghyunhub) | [<img src="https://avatars.githubusercontent.com/wellbeing-dough" width="100">](https://github.com/wellbeing-dough) | [<img src="https://avatars.githubusercontent.com/alsduq1117" width="100">](https://github.com/alsduq1117) |
 | :---------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
 |                                                추종현                                                 |                                                 김동우                                                  |                                                김민엽                                                 
 
