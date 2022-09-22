@@ -1,11 +1,11 @@
-# JPA-
+# JPA-Basic-Study
 김영한 님의 강의 JPA 기본편 강의 스터디
 
 ## Who
 
-| [<img src="https://avatars.githubusercontent.com/ksmfou98" width="100">](https://github.com/ksmfou98) | [<img src="https://avatars.githubusercontent.com/godtaehee" width="100">](https://github.com/godtaehee) |
-| :---------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
-|                                                이도현                                                 |                                                 김태희                                                  |
+| [<img src="https://avatars.githubusercontent.com/jonghyunhub" width="100">](https://github.com/jonghyunhub) | [<img src="https://avatars.githubusercontent.com/wellbeing-dough" width="100">](https://github.com/godtaehee) | [<img src="https://avatars.githubusercontent.com/alsduq1117" width="100">](https://github.com/godtaehee) |
+| :---------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
+|                                                추종현                                                 |                                                 김동우                                                  |                                                김민엽                                                 
 
 <br />
 
