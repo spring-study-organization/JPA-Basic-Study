@@ -82,5 +82,5 @@ https://maven.apache.org/ (메이븐 공식문서)
 >각각의 데이터베이스 마다 제공하는 `SQL` 문법과 함수는 조금씩 다른데  
 `JPA`는 특정 데이터베이스에 종속되지 않는다.
 
-<img src="../src/1주차/data6.png">
+<img src="src/data6.png">
  

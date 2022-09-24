@@ -18,7 +18,7 @@
 
 ### 1. 상속  
 
-<img src="../src/1주차/data1.png">
+<img src="src/data1.png">
 
 가령 위와 같은 상속을 받는 객체 구조가 있다고 하면
 
@@ -34,7 +34,7 @@
 
 ### 2. 연관 관계
 
-<img src="../src/1주차/data2.png">
+<img src="src/data2.png">
 
 `Member` 와 `Team` 객체를 위와 같이 설계 했다고 하면 
 
@@ -98,7 +98,7 @@ class Team{
 
 ### 3. 데이터 타입
 
-<img src="../src/1주차/data3.png">
+<img src="src/data3.png">
 
 가령 위와 같은 객체 구조가 있다고 하자.
 
@@ -168,7 +168,7 @@ class SampleCode{
 
 # JPA - Java Persistence API 란?
 
-<img src="../src/1주차/data4.png">
+<img src="src/data4.png">
 
 
 
@@ -177,7 +177,7 @@ class SampleCode{
 
 
 
-<img src="../src/1주차/data5.png">
+<img src="src/data5.png">
 
 >JPA는 사실 구현체가 아니고 인터페이스의 모음이다.
 
