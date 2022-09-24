@@ -198,6 +198,48 @@ class SampleCode{
 
 ### 유지보수
 
+```sql
+INSERT INTO MEMBER(MEMBER_ID, NAME, TEL) VALUES 
+SELECT MEMBER_ID, NAME, TEL FROM MEMBER M 
+UPDATE MEMBER SET ... TEL = ?
+```
+
+기존의 복잡한 `SQL` 대신
+
+```java
+public class Member {
+    private String memberId;
+    private String name;
+    private String tel;
+}
+```
+
+필드만 추가해주면 `JPA` 가 다 알아서 해준다.
+
+### JPA와 패러다임의 불일치 해결
+
+위에서 설명한 `객체와 RDBS의 불일치로 일어난 문제` 를 `JPA`가 모두 해결해주어 객체 지향적 프로그래밍으로 개발만 하면 된다.
+
+### 성능
+
+1. 1차 캐시와 동일성(identity) 보장
+
+> 같은 트렌젝션 안에서 같은 엔티티 조회를 하면 캐싱처리를 했다가 같은 녀석이면 캐싱된 것 안에서 데이터를 가져와서 객체에 넣어준다.  
+
+
+2. 트랜잭션을 지원하는 쓰기 지연 - INSERT
+
+> 트렌젝션 안에서 여러개의 INSERT 를 하게 되면 그때마다 보내는게 아니라 쿼리들을 모아서 한번에 보내주어 성능상의 이점을 가진다.
+
+3. 트랜잭션을 지원하는 쓰기 지연 - UPDATE 
+
+
+4. 지연 로딩과 즉시 로딩
+
+> 지연 로딩 : 프록시를 사용해서 쿼리를 한번에 보내는 것이 아닌 객체를 조회해서 가져오는 시점에 쿼리를 날려준다.  
+> 즉시 로딩 : JPA 옵션 기능으로, 의도적으로 쿼리를 한번에 보내서 가져오고 싶을 때 사용하면 처음 조회 시점에 모든 쿼리를 날려서 조회한다.
+
+#### 옵션 하나로 `SQL` 튜닝이 자유롭게 가능하다.
 
 
 
