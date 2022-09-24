@@ -10,7 +10,7 @@
 
 #### 1. 상속  
 
-<img src="../src/data1.png">
+<img src="../src/1주차/data1.png">
 
 가령 위와 같은 상속을 받는 객체 구조가 있다고 하면
 
