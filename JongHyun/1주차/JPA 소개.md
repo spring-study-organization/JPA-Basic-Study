@@ -10,7 +10,7 @@
 
 #### 1. 상속  
 
-<img src="/Users/chujonghyun/Desktop/JPA-Basic-Study/JongHyun/src/1주차/스크린샷 2022-09-24 오후 6.27.30.png">
+<img src="../src/data1.png">
 
 가령 위와 같은 상속을 받는 객체 구조가 있다고 하면
 
