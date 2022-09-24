@@ -57,7 +57,7 @@ https://maven.apache.org/ (메이븐 공식문서)
 </project>
 ```
 
-위 설정에서 `JPA` 구현체로 `Hibernate` 를 그리고 `DB` 는 `H2` 데이터베이스를 사용하겠다고 선언하였다.
+>위 설정에서 `JPA` 구현체로 `Hibernate` 를 그리고 `DB` 는 `H2` 데이터베이스를 사용하겠다고 선언하였다.
 
 
 ### JPA 설정하기
@@ -72,8 +72,31 @@ https://maven.apache.org/ (메이븐 공식문서)
 * javax.persistence로 시작: JPA 표준 속성
 * hibernate로 시작: 하이버네이트 전용 속성
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+<persistence-unit name="hello">
+<properties>
+<!-- 필수 속성 -->
+<!--<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>-->
+<property name="javax.persistence.jdbc.user" value="sa"/>
+<property name="javax.persistence.jdbc.password" value=""/>
+<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+<!-- 옵션 -->
+<property name="hibernate.show_sql" value="true"/>
+<property name="hibernate.format_sql" value="true"/>
+<property name="hibernate.use_sql_comments" value="true"/>
+<!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+</properties>
+</persistence-unit>
+</persistence>
+```
 
-
+>위 설정에서 h2 데이터베이스에 접근하기 위한 설정(user, pasword, url)과   
+> 데이터베이스 방언으로 h2 데이터베이스 하기 그리고 sql 보기 설정을 해주고 있다.
 
 ### 데이터베이스 방언
 
@@ -84,3 +107,5 @@ https://maven.apache.org/ (메이븐 공식문서)
 
 <img src="src/data6.png">
  
+
+# Hello JPA - 애플리케이션 개발
