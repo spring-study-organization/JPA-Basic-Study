@@ -166,7 +166,7 @@ class SampleCode{
 
 그래서 이런 문제를 해결하기 위해 고안된것이 바로 JPA 이다.
 
-#JPA - Java Persistence API 란?
+# JPA - Java Persistence API 란?
 
 <img src="../src/1주차/data4.png">
 
