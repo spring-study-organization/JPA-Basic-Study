@@ -136,6 +136,32 @@ class MemberService{
 
 ### 4. 데이터 식별 방법
 
+```java
+class SampleCode{
+
+    Member member;
+    
+    public Member getMember(String memberId) {
+        String sql = "SELECT * FROM MEMBER WHERE MEMBER_ID = ?";
+    }
+
+    // 비교하기
+    public DuplicateMember() {
+        String memberId = '100';
+        Member member1 = memberDAO.getMember(memberId);
+        Member member2 = memberDAO.getMember(memberId);
+    
+        if(member1 == member2){
+            // 다르다
+        }
+    }
+}
+
+```
+
+>위처럼 `SQL`을 통해 DB에서 데이터를 불러올 때는 분명 같은 데이터를 불러옴에도 다른 객체 2개를 생성해 각각 넣어주므로   
+> `member1` 과 `member2`를 비교하면 예상과는 다르게 다르다는 결과가 나온다.
+ 
 
 
 
