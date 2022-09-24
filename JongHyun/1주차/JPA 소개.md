@@ -51,24 +51,23 @@
 이 불일치를 해결하기 위해 객체를 테이블 구조에 맞춰서 설계했다고 하면 다음과 같은 형태가 될 것이다.
 
 ```java
-    class Member{
-        String id;          //Member_ID 컬럼 사용
-        Long teamId;        //TEAM_ID FK 사용
-        String username;    //USERNAME 컬럼 사용
-    }
-
-    class Team{
-        Long Id;        //TEAM_ID PK 사용
-        String name;    //NAME 컬럼 사용
-    }
+class Member{
+    String id;          //Member_ID 컬럼 사용
+    Long teamId;        //TEAM_ID FK 사용
+    String username;    //USERNAME 컬럼 사용
+}
+class Team{
+    Long Id;        //TEAM_ID PK 사용
+    String name;    //NAME 컬럼 사용
+}
 ```
 
 위와 같이 설계를 하게 되면 `Member` 에서 `Team` 으로 직접 참조를 하지 못하고  
 `Member` 에서 `Team` 으로 접근할 때 `Member` 의 `teamId` 값을 가지고 
 ```sql
-    SELECT * 
-    FROM TEAM 
-    WHERE ID =  #{TeamId}
+SELECT * 
+FROM TEAM 
+WHERE ID =  #{TeamId}
 ```
  이런 식의 SQL을 보내줘야 할 것이다.
 
@@ -79,24 +78,64 @@
 그러면 이제 남은 방법은 객체 그대로 내비두고 개발자인 우리가 테이블에 맞게 매핑해주는 수 밖에 없다.
 
 ```java
-    class Member{
-        String id;          //Member_ID 컬럼 사용
-        Team team;        //참조로 연관관게를 맺는다.
-        String username;    //USERNAME 컬럼 사용
+class Member{
+    String id;          //Member_ID 컬럼 사용
+    Team team;        //참조로 연관관게를 맺는다.
+    String username;    //USERNAME 컬럼 사용
 
-        Team getTeam() {
-            return team;
-        }
+    Team getTeam() {
+        return team;
     }
+}
 
-    class Team{
-        Long Id;        //TEAM_ID PK 사용
-        String name;    //NAME 컬럼 사용
-    }
+class Team{
+    Long Id;        //TEAM_ID PK 사용
+    String name;    //NAME 컬럼 사용
+}
 ```
 
 >즉, 위와 같이 설계하고 `CRUD` 를 할때 따로 매핑해주는 작업이 필요하다 => 복잡하고 귀찮다.
 
 ### 3. 데이터 타입
+
+<img src="../src/1주차/data3.png">
+
+가령 위와 같은 객체 구조가 있다고 하자.
+
+객체지향 프로그램으로 작성된 위외 같은 객체들은 서로 연관된 관계에 따라 자유롭게 탐색이 가능할 것이다.
+
+그러나, 위와 같이 되어 있는 구조에서 데이터들을 데이터베이스에서 가져와도 과연 자유롭게 탐색이 가능할까?
+
+>결론부터 말하자면 그럴 수 없다. 
+ 
+데이터가 로컬에 저장되어 있어서 즉각적으로 가져오면 모르겠으나,
+
+우리는 데이터를 `RDBS` 에 저장해놓고 필요할때마다 가져와서 사용하는 방식을 채택하고 있다.
+
+한번에 모든 데이터를 가져오면 이런 문제가 발생하지 않겠지만,
+
+모든 데이터를 항상 가져 오는건 굉장히 부담되는 작업이기 때문이기 때문이다.
+
+실제 코드를 보면서 왜 이런 현상이 발생하는지 알아보자.
+
+```java
+class MemberService{
+    public void process() {
+        Member member = memberDAO.find(memberId);
+        member.getTeam(); // 불러 올 수 있을까?
+        member.getOrder().getDelivery(); // 불러 올 수 있을까?
+    }
+} 
+```
+
+라는 코드가 있다고 해보면
+
+`Member` 를 가져올 때 `Member` 객체에서 `Team` , `Order`, `Deliverly` 에 접근할 수 있다는 보장이 없다.
+
+>왜냐면 `SQL` 로 `Member` 테이블을 조인해서 가져올 때 어느 테이블과 같이 가져오는지 코드로는 알 방법이 없기 때문이다!
+
+### 4. 데이터 식별 방법
+
+
 
 
