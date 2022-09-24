@@ -173,4 +173,31 @@ class SampleCode{
 >현재 자바 진영의 `ORM` 기술 표준을 의미하며  
 >`ORM(Object-relational mapping)` 이란 객체와 관계형 데이터베이스 중간에서 개발자가 하던 매핑을 자동으로 해주는 기술을 의미한다.
 
+<img src="../src/1주차/data5.png">
+
+>JPA는 사실 구현체가 아니고 인터페이스의 모음이다.
+
+## JPA를 사용해야 하는 이유(JPA의 장점)
+
+1. SQL 중심적인 개발에서 객체 중심으로 개발
+2. 생산성
+3. 유지보수
+4. 패러다임의 불일치 해결
+5. 성능
+6. 데이터 접근 추상화와 벤더 독립성
+7. 표준
+
+### 생산성
+
+* 저장: jpa.persist(member)
+* 조회: Member member = jpa.find(memberId)
+* 수정: member.setName(“변경할 이름”)
+* 삭제: jpa.remove(member)
+
+>기존에 복잡하게 `SQL` 맵핑을 해주어야 했던 부분을 간단한 메서드 하나로 처리가 가능하다.
+
+### 유지보수
+
+
+
 
