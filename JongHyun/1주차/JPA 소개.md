@@ -44,6 +44,25 @@
 
 반면에
 
->테이블은 `Member` 에서 `Team`에 접근할때 `PK`, `FK` 를  이용하고, 
-> `Member` -> `Team` ,  `Team` -> `Member` 양방향 접근이 가능하다.
+>테이블은 `Member` 에서 `Team`에 접근할때 `PK`, `FK` 를  이용하고,  `Member` <-> `Team` 양방향 접근이 가능하다.
+
+이 불일치를 해결하기 위해 객체를 테이블 구조에 맞춰서 설계했다고 하면 다음과 같은 형태가 될 것이다.
+
+```java
+    class Member{
+        String id;          //Member_ID 컬럼 사용
+        Long teamId;        //TEAM_ID FK 사용
+        String username;    //USERNAME 컬럼 사용
+    }
+
+    class Team{
+        Long Id;        //TEAM_ID PK 사용
+        String name;    //NAME 컬럼 사용
+    }
+```
+
+위와 같이 설계를 하게 되면 `Member` 에서 `Team` 으로 직접 참조를 하지 못하고  
+`Member` 에서 `Team` 으로 접근할 때 `Member` 의 `teamId` 값을 가지고  
+`SELECT * FROM TEAM WHERE ID =  #{TeamId}` 이런 식의 SQL을 보내줘야 할것이다.
+
 
