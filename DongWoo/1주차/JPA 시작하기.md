@@ -122,3 +122,94 @@ public class JpaMain {
 > 실제로는 spring 이 다해준다
 
 ### 수정
+
+```java
+
+public class JpaMain {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+
+        EntityManager em = emf.createEntityManager();
+
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
+        try{
+            Member findMember = em.find(Member.class, 1L);
+            System.out.println("findMember.id = " + findMember.getId());
+            System.out.println("findMember.name = " + findMember.getName());
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        emf.close();
+    }
+}
+```
+>수정은 이렇게 findMember 라는 Member 객체에 em.find()하고 멤버 클래스, 찾는 아이디 값을 넣어서
+> findMember 에 찾는 Member 를 넣어주고 그 멤버에대해 출력하면 된다
+
+### 삭제
+``` java
+
+public class JpaMain {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+
+        EntityManager em = emf.createEntityManager();
+
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
+        try{
+            Member findMember = em.find(Member.class, 2L);
+            em.remove(findMember);
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        emf.close();
+    }
+}
+```
+
+>삭제도 마찬가지로 삭제할 findMember 만들어주고 그걸 em.remove(findMember); 해주면 삭제가 된다
+>그러면 delete 쿼리가 나가면서 삭제가 된다
+
+### 수정
+
+``` java
+
+public class JpaMain {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+
+        EntityManager em = emf.createEntityManager();
+
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
+        try{
+            Member findMember = em.find(Member.class, 2L);
+            findMember.setName("HelloJPA");
+            
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        emf.close();
+    }
+}
+
+```
+
+> 마찬가지로 수정할 findMember 만들어주고 이름을 setName 으로 바꿨다 그런다음에 em.persist(findMember)를 해줘야 할까?
+> nope! 우리가 자바 컬렉션을 다루듯이 DB 를 다루게 설계되서 가능하다 자바 객체 값만 바꿨데 어캐했을까 JPA 를 통해서 entity 를 가져오면
+> 그리고 JPA 가 변경이 됬는지 안됬는지 트랜잭션을 커밋하는 시점에 다 체크를 한다 어? 얘가 이름이 바꼈네? 트랜잭션 커밋직전에 업데이트 쿼리
+> 날리고 트랜잭션이 커밋된다
